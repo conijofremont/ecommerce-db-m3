@@ -1,10 +1,10 @@
 -- ============================================
--- DATA DE EJEMPLO: E-COMMERCE PORTAFOLIO
+-- DATA E-COMMERCE PORTAFOLIO
 -- (clientes, productos, variantes, inventario, órdenes)
 -- ============================================
 
 -- ============================================
--- CLIENTES (correos gmail)
+-- CLIENTES
 -- ============================================
 INSERT INTO customers (full_name, email, phone) VALUES
 ('Constanza Jofré', 'constanza@gmail.com', '+56911112222'),
@@ -19,7 +19,7 @@ INSERT INTO customers (full_name, email, phone) VALUES
 ('Valentina Díaz', 'valentina.diaz@gmail.com', '+56912345678');
 
 -- ============================================
--- PRODUCTOS (los 12 reales de tu frontend)
+-- PRODUCTOS 
 -- ============================================
 INSERT INTO products (name, description, price, is_clothing, is_shoes, gender) VALUES
 ('Polera Algodón', 'Polera de algodón peruano, manga corta.', 15999, TRUE, FALSE, 'unisex'),
