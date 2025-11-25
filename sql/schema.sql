@@ -1,9 +1,9 @@
 -- ============================================
--- SCHEMA E-COMMERCE PORTAFOLIO
+-- SCHEMA E-COMMERCE PORTAFOLIO (POSTGRESQL)
 -- Creación de tablas y relaciones
 -- ============================================
 
--- Eliminar tablas si ya existen
+-- Eliminar tablas en orden de dependencias
 DROP TABLE IF EXISTS order_items CASCADE;
 DROP TABLE IF EXISTS inventory_movements CASCADE;
 DROP TABLE IF EXISTS orders CASCADE;
@@ -42,9 +42,11 @@ CREATE TABLE products (
 CREATE TABLE product_variants (
     id SERIAL PRIMARY KEY,
     product_id INTEGER NOT NULL,
-    variant_name VARCHAR(20),
+    variant_name VARCHAR(20) NOT NULL,
     CONSTRAINT fk_product
-        FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
+        FOREIGN KEY (product_id)
+        REFERENCES products(id)
+        ON DELETE CASCADE,
     CONSTRAINT unique_product_variant UNIQUE (product_id, variant_name)
 );
 
@@ -57,7 +59,9 @@ CREATE TABLE orders (
     order_date TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(20) DEFAULT 'pending',
     CONSTRAINT fk_customer
-        FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE
+        FOREIGN KEY (customer_id)
+        REFERENCES customers(id)
+        ON DELETE CASCADE
 );
 
 -- ============================================
@@ -70,9 +74,13 @@ CREATE TABLE order_items (
     quantity INTEGER NOT NULL CHECK (quantity > 0),
     unit_price INTEGER NOT NULL,
     CONSTRAINT fk_order
-        FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+        FOREIGN KEY (order_id)
+        REFERENCES orders(id)
+        ON DELETE CASCADE,
     CONSTRAINT fk_variant
-        FOREIGN KEY (product_variant_id) REFERENCES product_variants(id) ON DELETE CASCADE
+        FOREIGN KEY (product_variant_id)
+        REFERENCES product_variants(id)
+        ON DELETE CASCADE
 );
 
 -- ============================================
@@ -81,11 +89,11 @@ CREATE TABLE order_items (
 CREATE TABLE inventory_movements (
     id SERIAL PRIMARY KEY,
     product_variant_id INTEGER NOT NULL,
-    movement_type VARCHAR(10) NOT NULL,  -- IN / OUT
+    movement_type VARCHAR(10) NOT NULL CHECK (movement_type IN ('IN','OUT')),
     quantity INTEGER NOT NULL CHECK (quantity > 0),
     movement_date TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_inventory_variant
-        FOREIGN KEY (product_variant_id) REFERENCES product_variants(id) ON DELETE CASCADE
+        FOREIGN KEY (product_variant_id)
+        REFERENCES product_variants(id)
+        ON DELETE CASCADE
 );
-
-
