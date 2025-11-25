@@ -4,7 +4,7 @@
 -- ============================================
 
 -- ============================================
--- CLIENTES
+-- 10 CLIENTES
 -- ============================================
 INSERT INTO customers (full_name, email, phone) VALUES
 ('Constanza Jofré', 'constanza@gmail.com', '+56911112222'),
@@ -19,7 +19,7 @@ INSERT INTO customers (full_name, email, phone) VALUES
 ('Valentina Díaz', 'valentina.diaz@gmail.com', '+56912345678');
 
 -- ============================================
--- PRODUCTOS 
+-- 12 PRODUCTOS 
 -- ============================================
 INSERT INTO products (name, description, price, is_clothing, is_shoes, gender) VALUES
 ('Polera Algodón', 'Polera de algodón peruano, manga corta.', 15999, TRUE, FALSE, 'unisex'),
