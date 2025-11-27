@@ -187,6 +187,12 @@ Constanza Jofré Montecinos
 Bootcamp Desarrollador Full Stack Java — 2025
 Talento Digital para Chile / SENCE
 
+---
+
+🔗 [Repositorio público en GitHub](https://github.com/conijofremont/ecommerce-db-m3/tree/master)
+
+
+
 📄 8. Licencia
 Proyecto académico para evaluación del Módulo 3.
 Uso permitido únicamente para fines formativos.
